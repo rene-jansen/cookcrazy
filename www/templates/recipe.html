@@ -1,0 +1,66 @@
+<ion-view view-title=recipe.name>
+  <ion-content>
+    <div class="card">
+      <div class="item item-text-wrap">
+        {{recipe.description}}
+      </div>  
+    </div>
+    
+    <div class="card">
+      <div class="row">
+        <div class="col">
+          <div class="item item-text-wrap">
+            {{recipe.ingredient1}}
+          </div>            
+        </div>
+        <div class="col">
+          <div class="item item-text-wrap">
+            {{recipe.ingredient2}}
+          </div>            
+        </div>        
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="item item-text-wrap">
+        {{recipe.production}}
+      </div>  
+    </div>
+    
+    <div class="card">
+      <div class="row">
+        <div class="col">
+          <div class="item item-text-wrap">
+            Preparation
+          </div>            
+        </div>
+        <div class="col">
+          <div class="item item-text-wrap">
+            {{recipe.preparationtime}}
+          </div>            
+        </div>        
+        <div class="col">
+          <div class="item item-text-wrap">
+            Cooking
+          </div>            
+        </div>
+        <div class="col">
+           
+          <span class="badge badge-assertive" ng-bind="recipe.cookingtime"></span>
+        </div>        
+        <div class="col">
+          <div class="item item-text-wrap">
+            Serves
+          </div>            
+        </div>
+        <div class="col">
+          <div class="badge badge-assertive">
+            {{recipe.serves}}
+          </div>            
+        </div>        
+        
+      </div>
+    </div>    
+    
+  </ion-content>
+</ion-view>
