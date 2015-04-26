@@ -30,6 +30,11 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    
+    if (window.navigator) {
+      window.plugins.orientationLock.unlock();
+    }
+    
     /*
     recipeDB.destroy();
     

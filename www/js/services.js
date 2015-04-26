@@ -30,7 +30,6 @@ angular.module('starter.services', ['ngResource'])
      
 }])
 
-
 .factory('Countries', function() {
   // Might use a resource here that returns a JSON array
 
@@ -158,6 +157,9 @@ angular.module('starter.services', ['ngResource'])
     all: function() {
       return recipes;
     },
+    query: function() {
+      return recipes;
+    },    
     remove: function(recipe) {
       recipes.splice(recipes.indexOf(recipe), 1);
     },
