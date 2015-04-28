@@ -1,6 +1,87 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+
+.controller('TodoCtrl', function($scope, $timeout, $ionicModal, Projects, $ionicSideMenuDelegate) {
+
+  // A utility function for creating a new project
+  // with the given projectTitle
+  var createProject = function(projectTitle) {
+    var newProject = Projects.newProject(projectTitle);
+    $scope.projects.push(newProject);
+    Projects.save($scope.projects);
+    $scope.selectProject(newProject, $scope.projects.length-1);
+  }
+
+
+  // Load or initialize projects
+  $scope.projects = Projects.all();
+
+  // Grab the last active, or the first project
+  $scope.activeProject = $scope.projects[Projects.getLastActiveIndex()];
+
+  // Called to create a new project
+  $scope.newProject = function() {
+    var projectTitle = prompt('Project name');
+    if(projectTitle) {
+      createProject(projectTitle);
+    }
+  };
+  
+  // Called to remove a project
+  $scope.remove = function(project) {       
+    $scope.projects.splice($scope.projects.indexOf(project), 1);
+    
+    // Inefficient, but save all the projects
+    Projects.save($scope.projects);    
+  };  
+
+  // Called to select the given project
+  $scope.selectProject = function(project, index) {
+    $scope.activeProject = project;
+    Projects.setLastActiveIndex(index);
+    $ionicSideMenuDelegate.toggleLeft(false);
+  };
+
+
+
+  $scope.toggleProjects = function() {
+    $ionicSideMenuDelegate.toggleLeft();
+  };
+  
+  $scope.toggleProjects2 = function() {
+    $ionicSideMenuDelegate.toggleRight();
+  };
+
+  // Try to create the first project, make sure to defer
+  // this by using $timeout so everything is initialized
+  // properly
+  $timeout(function() {
+    if($scope.projects.length == 0) {
+      while(true) {
+        var projectTitle = prompt('Your first project title:');
+        if(projectTitle) {
+          createProject(projectTitle);
+          break;
+        }
+      }
+    }
+  });
+
+})
+
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicSideMenuDelegate, Countries) {
+
+  // Load or initialize countries
+  //$scope.countrylist = Countries.all();
+
+  // Grab the last active, or the first country
+  //$scope.activeCountry = $scope.countrylist[0];
+
+  $scope.toggleProjects2 = function() {
+    $ionicSideMenuDelegate.toggleRight();
+  }; 
+  
+  
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -42,10 +123,24 @@ angular.module('starter.controllers', [])
 })
 
 .controller('RecipelistCtrl', function($scope, $rootScope, Recipes) {
+  
   $scope.recipelist = Recipes.all();
+  
+  $scope.clearSearch = function() {
+    $scope.searchKey = "";
+    //$scope.loadData();
+  };
+  
+  // Called to remove a project
+  $scope.remove = function(recipe) {       
+    $scope.recipelist.splice($scope.recipelist.indexOf(recipe), 1);
+   
+  };    
+  
 })
 
 .controller('RecipeCtrl', function($scope, $stateParams, Recipes) {
+  
   $scope.recipe = Recipes.get($stateParams.recipeId);
 })
 

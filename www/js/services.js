@@ -30,6 +30,37 @@ angular.module('starter.services', ['ngResource'])
      
 }])
 
+.factory('Projects', function() {
+  return {
+    all: function() {
+      var projectString = window.localStorage['projects'];
+      if(projectString) {
+        return angular.fromJson(projectString);
+      }
+      return [];
+    },
+    save: function(projects) {
+      window.localStorage['projects'] = angular.toJson(projects);
+    },
+    newProject: function(projectTitle) {
+      // Add a new project
+      return {
+        title: projectTitle,
+        tasks: []
+      };
+    },
+    removeProject: function(project) {
+      //chats.splice(chats.indexOf(chat), 1);
+    },
+    getLastActiveIndex: function() {
+      return parseInt(window.localStorage['lastActiveProject']) || 0;
+    },
+    setLastActiveIndex: function(index) {
+      window.localStorage['lastActiveProject'] = index;
+    }
+  }
+})
+
 .factory('Countries', function() {
   // Might use a resource here that returns a JSON array
 

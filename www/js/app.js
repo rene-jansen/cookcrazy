@@ -31,10 +31,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       StatusBar.styleDefault();
     }
     
-    if (window.navigator) {
-      window.plugins.orientationLock.unlock();
-    }
-    
     /*
     recipeDB.destroy();
     
@@ -66,6 +62,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     */
   });
 })
+
 
 .config(function($stateProvider, $urlRouterProvider) {
   $stateProvider
