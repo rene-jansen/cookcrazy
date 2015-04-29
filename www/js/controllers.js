@@ -69,18 +69,19 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $ionicSideMenuDelegate, Countries) {
+.controller('AppCtrl', function($scope, $rootScope, $ionicModal, $timeout, $ionicSideMenuDelegate, Countries) {
 
   // Load or initialize countries
   //$scope.countrylist = Countries.all();
 
   // Grab the last active, or the first country
-  //$scope.activeCountry = $scope.countrylist[0];
+  $scope.activeCountry = "Australia";
 
-  $scope.toggleProjects2 = function() {
-    $ionicSideMenuDelegate.toggleRight();
-  }; 
   
+  $rootScope.$on('searchKeyChange', function(event, searchKey) {
+      $scope.searchKey = searchKey;
+      //$scope.loadData();
+  });
   
   // Form data for the login modal
   $scope.loginData = {};
@@ -114,8 +115,18 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('CountrylistCtrl', function($scope, $rootScope, Countries) {
+.controller('CountrylistCtrl', function($scope, $rootScope, $state, Countries) {
   $scope.countrylist = Countries.all();
+  
+  // Called to select the given project
+  $scope.selectCountry = function(country, index) {
+    $scope.activeCountry = country;
+    $state.go('app.recipes');
+    //Projects.setLastActiveIndex(index);
+    //$ionicSideMenuDelegate.toggleLeft(false);
+    
+  };  
+  
 })
 
 .controller('CategorylistCtrl', function($scope, $rootScope, Categories) {
@@ -125,6 +136,8 @@ angular.module('starter.controllers', [])
 .controller('RecipelistCtrl', function($scope, $rootScope, Recipes) {
   
   $scope.recipelist = Recipes.all();
+  
+
   
   $scope.clearSearch = function() {
     $scope.searchKey = "";
@@ -139,9 +152,9 @@ angular.module('starter.controllers', [])
   
 })
 
-.controller('RecipeCtrl', function($scope, $stateParams, Recipes) {
-  
+.controller('RecipeCtrl', function($scope, $stateParams, Recipes) {  
   $scope.recipe = Recipes.get($stateParams.recipeId);
+  $scope.tags = $scope.recipe.tags.split(', ');
 })
 
 /*

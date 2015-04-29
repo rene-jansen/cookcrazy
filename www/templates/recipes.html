@@ -29,7 +29,7 @@
       <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="recipe in recipelist" href="#/app/recipe/{{recipe._id}}">
         <img ng-src="{{recipe.imagePath}}">
         {{recipe.name}}
-        <p>{{recipe.description}}</p>
+        <p>{{recipe.tags}}</p>
         <i class="icon ion-chevron-right icon-accessory"></i>  
         <ion-option-button class="button-assertive" ng-click="remove(recipe)">
           Delete

@@ -5,68 +5,126 @@
     </button>
   </ion-nav-buttons> 
   
-  <ion-content>
-    <div class="card">
-      <div class="item item-text-wrap">
-        {{recipe.description}}
-      </div>  
-    </div>
-    
-    <div class="card">
-      <div class="row">
-        <div class="col">
-          <div class="item item-text-wrap">
-            {{recipe.ingredient1}}
-          </div>            
-        </div>
-        <div class="col">
-          <div class="item item-text-wrap">
-            {{recipe.ingredient2}}
-          </div>            
-        </div>        
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="item item-text-wrap">
-        {{recipe.production}}
-      </div>  
-    </div>
-    
-    <div class="card">
-      <div class="row">
-        <div class="col">
-          <div class="item item-text-wrap">
-            Preparation
-          </div>            
-        </div>
-        <div class="col">
-          <div class="item item-text-wrap">
-            {{recipe.preparationtime}}
-          </div>            
-        </div>        
-        <div class="col">
-          <div class="item item-text-wrap">
-            Cooking
-          </div>            
-        </div>
-        <div class="col">
-           
-          <span class="badge badge-assertive" ng-bind="recipe.cookingtime"></span>
-        </div>        
-        <div class="col">
-          <div class="item item-text-wrap">
-            Serves
-          </div>            
-        </div>
-        <div class="col">
-          <div class="badge badge-assertive">
-            {{recipe.serves}}
-          </div>            
-        </div>        
+  <ion-content padding="false">
+    <ion-slide-box show-pager="true" >
+      <!-- class= "has-header" style="position:absolute; bottom:0; left:0; right: 0;" -->
+      <ion-slide>    
         
-      </div>
-    </div>    
+          <div class="card">
+            
+            <div class="item item-divider item-text-wrap">
+              {{recipe.description}}
+            </div>  
+
+            <div class="row">
+              <div class="col col-66">
+                <div class="item">
+                  Preparation time
+                </div>            
+              </div>
     
+              <div class="col col-33">
+                <div class="item" style="text-align: right">
+                  {{recipe.preparationtime}} min.
+                </div>            
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col col-66">
+                <div class="item">
+                  Cooking time
+                </div>            
+              </div>
+         
+              <div class="col col-33">
+                <div class="item" style="text-align: right">
+                  {{recipe.cookingtime}} min.
+                </div>            
+              </div>            
+            </div>
+
+            <div class="row">
+              <div class="col col-33">
+                <div class="item">
+                  Serves
+                </div>            
+              </div>
+              <div class="col col-66">
+                <div class="item">
+                  {{recipe.serves}}
+                </div>            
+              </div>                
+            </div>
+
+            <div class="row">
+              <div class="col col-33">
+                <div class="item item-text-wrap">
+                  Author
+                </div>            
+              </div>
+              <div class="col col-66">
+                <div class="item item-text-wrap">
+                  {{recipe.author}}
+                </div>            
+              </div>                
+            </div>
+
+            <div class="row">
+              <div class="col col-33">
+                <div class="item item-text-wrap">
+                  Source
+                </div>            
+              </div>
+              <div class="col col-66">
+                <div class="item item-text-wrap">
+                  {{recipe.source}}
+                </div>            
+              </div>                
+            </div>          
+            
+            <ion-item ng-repeat="tag in tags" class="item-icon-left" ng-click="setSearchKey(tag)">
+                <i class="icon ion-pricetag placeholder-icon"></i>
+                <span ng-bind="tag"></span>
+            </ion-item>                 
+          
+          </div>
+          
+          <div class="row">&nbsp;</div>  
+        
+      </ion-slide>
+
+      <ion-slide>
+        <div class="card">
+          <div class="item item-divider">
+            Ingredients
+          </div>          
+          <div class="row">
+            <div class="col">
+              <div class="item item-text-wrap">
+                {{recipe.ingredient1}}
+              </div>            
+            </div>
+            <div class="col">
+              <div class="item item-text-wrap">
+                {{recipe.ingredient2}}
+              </div>            
+            </div>        
+          </div>
+        </div>
+      </ion-slide>
+      
+      <ion-slide>
+        <div class="card">
+          <div class="item item-divider">
+            Instructions
+          </div>                    
+          <div class="item item-text-wrap">
+            {{recipe.production}}
+          </div>  
+        </div>
+      </ion-slide>
+
+    </ion-slide-box> 
   </ion-content>
 </ion-view>

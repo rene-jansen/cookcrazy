@@ -140,15 +140,15 @@ angular.module('starter.services', ['ngResource'])
   var recipes = [{
       _id: '1',
       name: 'Kangaroo Steak',
-      country: 'Australia',
-      category: 'Main',
+      country: 'Australia',      
+      tags: 'Main, Game',
       imagePath: 'img/australia.png',
       description: 'Traditional outback food',
       ingredient1: '1 Skip',
       ingredient2: 'Salt',
       production: '1. Heat up the barbie',
-      author: 'Waltzing Mathilda',
-      source: 'NT recipes',
+      author: 'Waltzing Mathilda xxxx yyyy  zz yyy dd',
+      source: 'NT recipes url url url url fhfhfhfhf hjhjhjhjh bnbnb nn nn sshha',
       preparationtime: 10,
       cookingtime: 4,
       serves: 4
@@ -156,7 +156,7 @@ angular.module('starter.services', ['ngResource'])
       _id: '2',
       name: 'Pavlova',
       country: 'Australia',
-      category: 'Desert',
+      tags: 'Desert',
       imagePath: 'img/australia.png',
       description: 'Egg white',
       ingredient1: '2 eggs',
@@ -171,7 +171,7 @@ angular.module('starter.services', ['ngResource'])
       _id: '3',
       name: 'Peking Duck',
       country: 'China',
-      category: 'Main',
+      tags: 'Main',
       imagePath: 'img/china.png',
       description: 'Traditional chinees',
       ingredient1: '1 duck',
@@ -188,8 +188,14 @@ angular.module('starter.services', ['ngResource'])
     all: function() {
       return recipes;
     },
-    query: function() {
-      return recipes;
+    query: function(searchKey) {
+      
+      for (var i = 0; i < recipes.length; i++) {
+        if (recipes[i]._id === recipeId) {
+          return recipes[i];
+        }
+      }
+      return null;            
     },    
     remove: function(recipe) {
       recipes.splice(recipes.indexOf(recipe), 1);

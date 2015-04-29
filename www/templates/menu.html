@@ -19,20 +19,24 @@
 
   <ion-side-menu side="left">
     <ion-header-bar class="bar-positive" >
-      <h1 class="title">Left</h1>
+      <h1 class="title">CookCrazy</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item nav-clear menu-close ng-click="login()">
-          Login
+        <ion-item nav-clear menu-close ng-click="login()" class="item-icon-left">
+          <i class="icon ion-ios-gear"></i>
+          Settings
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/countries">
+        <ion-item nav-clear menu-close href="#/app/countries" class="item-icon-left">
+          <i class="icon ion-ios-world"></i>
           Countries
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/categories">
+        <ion-item nav-clear menu-close href="#/app/categories" class="item-icon-left">
+          <i class="icon ion-ios-paper"></i>
           Categories
         </ion-item>
-        <ion-item nav-clear menu-close href="#/app/recipes">
+        <ion-item nav-clear menu-close href="#/app/recipes" class="item-icon-left">
+          <i class="icon ion-document-text"></i>
           Recipes
         </ion-item>
       </ion-list>
