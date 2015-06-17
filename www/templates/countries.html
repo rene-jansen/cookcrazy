@@ -1,15 +1,60 @@
 <ion-view view-title="Countries">
+
   <ion-content>
+    
+    <div class="list item-avatar">
+      <ion-radio ng-repeat="country in countrylist" ng-value="country._id" ng-model="settings.defaultCountry">    
+          <img ng-src="{{country.imagePath}}">
+          {{country.country}}
+      </ion-radio>      
+    </div>    
+
+  </ion-content>
+  
+<!--
+ng-change="serverSideChange(country)"
+
+      <label class="item item-radio item-avatar" ng-repeat="country in countrylist" ng-click="selectCountry(country)">
+        <input type="radio" name="countrygroup">
+        <div class="item-content">
+          <img ng-src="{{country.imagePath}}">
+          {{country.country}}
+        </div>
+        <i class="radio-icon ion-checkmark"></i>
+      </label>
+
+
+  
     <ion-list>
       <ion-item class="item-remove-animate item-avatar" ng-repeat="country in countrylist" 
                 ng-click="selectCountry(country, $index)" ng-class="{active: activeCountry == country}">
         <img ng-src="{{country.imagePath}}">
         {{country.country}}
-          
-        <ion-option-button class="button-assertive" ng-click="remove(country)">
-          Delete
-        </ion-option-button>  
       </ion-item>
     </ion-list>
+
+  <ion-content>
+    <div class="list">
+      
+      <label class="item item-radio">
+        <input type="radio" name="groupttt">
+        <div class="item-content">
+          Go
+        </div>
+        <i class="radio-icon icon-checkmark"></i>
+      </label>
+      
+      <label class="item item-radio">
+        <input type="radio" name="groupttt">
+        <div class="item-content">
+          Gosss
+        </div>
+        <i class="radio-icon icon-checkmark"></i>
+      </label>
+      
+    </div>
+         
+    
   </ion-content>
+ -->
 </ion-view>

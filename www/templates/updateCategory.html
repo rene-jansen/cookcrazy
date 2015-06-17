@@ -1,0 +1,25 @@
+<ion-modal-view>
+  
+  <ion-header-bar class="bar-positive">
+    <h1 class="title">Update Category</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeCategory()">Close</button>
+    </div>    
+  </ion-header-bar>
+  
+  <ion-content>
+    <form ng-submit="acceptCategory()">
+      <div class="list">
+        
+        <label class="item item-input">          
+          <input type="text" placeholder="Order" ng-model="category.order">
+        </label>
+        
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Accept</button>
+        </label>
+        
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

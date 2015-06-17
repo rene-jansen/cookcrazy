@@ -30,6 +30,31 @@ angular.module('starter.services', ['ngResource'])
      
 }])
 
+.factory('Settings', function() {
+  
+  var defaultCountry = "Australia",
+      showAllCountry = true;
+  
+  return {
+    all: function() {
+      var settingsString = window.localStorage['settings'];
+      if(settingsString) {
+        return angular.fromJson(settingsString);
+      }
+      return {defaultCountry: "au", showAllCountry: true };
+    },      
+    getShowAllCountry: function() {      
+      return showAllCountry;
+    },
+    setShowAllCountry: function(showountry) {      
+      showAllCountry = showcountry;
+    },
+    save: function(settings) {
+      window.localStorage['settings'] = angular.toJson(settings);
+    }      
+  }
+})
+
 .factory('Projects', function() {
   return {
     all: function() {
@@ -83,6 +108,18 @@ angular.module('starter.services', ['ngResource'])
     all: function() {
       return countries;
     },
+    query: function(showall) {      
+      if (showall) { return all() };
+            
+      var countriesWithRecipes = [];
+      for (var i = 0; i < countries.length; i++) {
+        // has country a recipe ? Recipes.forCountry(countries[i].country) 
+        if (countries[i]._id === parseInt(countryId)) {
+          countriesWithRecipes.push(countries[i]);
+        }
+      }      
+      return countriesWithRecipes;
+    },    
     remove: function(country) {
       countries.splice(countries.indexOf(country), 1);
     },
@@ -122,9 +159,20 @@ angular.module('starter.services', ['ngResource'])
     remove: function(category) {
       categories.splice(categories.indexOf(category), 1);
     },
+    newCategory: function() {
+      // Add a new category
+      return {
+        _id: String(categories.length + 1),
+        category: "",
+        order: (categories.length + 1 ) * 10
+      };
+    },    
+    create: function(category) {
+      categories.push(category);
+    },
     get: function(categoryId) {
       for (var i = 0; i < categories.length; i++) {
-        if (categories[i]._id === parseInt(categoryId)) {
+        if (categories[i]._id === categoryId) {          
           return categories[i];
         }
       }
@@ -196,7 +244,15 @@ angular.module('starter.services', ['ngResource'])
         }
       }
       return null;            
-    },    
+    },
+    newRecipe: function() {
+      // Add a new recipe
+      return {
+        _id: String(recipes.length + 1),
+        name: "",
+        imagePath: 'img/australia.png'
+      };
+    },     
     remove: function(recipe) {
       recipes.splice(recipes.indexOf(recipe), 1);
     },

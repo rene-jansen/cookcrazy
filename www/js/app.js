@@ -17,9 +17,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 */
 
 .run(function($ionicPlatform, $rootScope /*, localDB, remoteDB, recipeDB, recipeRemoteDB, categoryDB, categoryRemoteDB */ ) {
-  
-  $rootScope.server = "http://belgianbeerexplorer.coenraets.org";
-  
+
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -93,6 +91,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+  
+  .state('app.category', {
+    url: "/category/:categoryId",
+    views: {
+      'menuContent': {
+        templateUrl: "templates/category.html",
+        controller: 'CategoryCtrl'
+      }
+    }
+  })  
   
   .state('app.recipes', {
     url: "/recipes",

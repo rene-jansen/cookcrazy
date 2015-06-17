@@ -1,7 +1,7 @@
 <ion-view view-title={{recipe.name}}>
   
   <ion-nav-buttons side="right">
-    <button class="button button-icon button-clear ion-compose" ng-click="login()">
+    <button class="button button-icon button-clear ion-compose" ng-click="updateRecipe()">
     </button>
   </ion-nav-buttons> 
   
@@ -19,13 +19,13 @@
             <div class="row">
               <div class="col col-66">
                 <div class="item">
-                  Preparation time
+                  Preparation time (m)
                 </div>            
               </div>
     
               <div class="col col-33">
                 <div class="item" style="text-align: right">
-                  {{recipe.preparationtime}} min.
+                  {{recipe.preparationtime}} 
                 </div>            
               </div>
             </div>
@@ -33,13 +33,13 @@
             <div class="row">
               <div class="col col-66">
                 <div class="item">
-                  Cooking time
+                  Cooking time (m)
                 </div>            
               </div>
          
               <div class="col col-33">
                 <div class="item" style="text-align: right">
-                  {{recipe.cookingtime}} min.
+                  {{recipe.cookingtime}} 
                 </div>            
               </div>            
             </div>
@@ -50,8 +50,8 @@
                   Serves
                 </div>            
               </div>
-              <div class="col col-66">
-                <div class="item">
+              <div class="col col-66">                
+                <div class="item" style="text-align: right">  
                   {{recipe.serves}}
                 </div>            
               </div>                
@@ -59,12 +59,12 @@
 
             <div class="row">
               <div class="col col-33">
-                <div class="item item-text-wrap">
+                <div class="item">
                   Author
                 </div>            
               </div>
               <div class="col col-66">
-                <div class="item item-text-wrap">
+                <div class="item item-text-wrap" style="text-align: right">
                   {{recipe.author}}
                 </div>            
               </div>                
@@ -72,12 +72,12 @@
 
             <div class="row">
               <div class="col col-33">
-                <div class="item item-text-wrap">
+                <div class="item">
                   Source
                 </div>            
               </div>
               <div class="col col-66">
-                <div class="item item-text-wrap">
+                <div class="item item-text-wrap" style="text-align: right">
                   {{recipe.source}}
                 </div>            
               </div>                
@@ -95,19 +95,19 @@
       </ion-slide>
 
       <ion-slide>
-        <div class="card">
+        <div class="list card">
           <div class="item item-divider">
             Ingredients
           </div>          
           <div class="row">
-            <div class="col">
-              <div class="item item-text-wrap">
-                {{recipe.ingredient1}}
+            <div class="col" style="width:50%;">
+              <div class="item" style="padding: 0px;">                
+                <textarea rows="22" ng-model="recipe.ingredient1" disabled="true" style="background-color:#fff;"></textarea> 
               </div>            
             </div>
-            <div class="col">
-              <div class="item item-text-wrap">
-                {{recipe.ingredient2}}
+            <div class="col" style="width:50%;">
+              <div class="item" style="padding: 0px;">
+                <textarea rows="22" ng-model="recipe.ingredient2" disabled="true" style="background-color:#fff;"></textarea> 
               </div>            
             </div>        
           </div>
@@ -118,10 +118,10 @@
         <div class="card">
           <div class="item item-divider">
             Instructions
-          </div>                    
-          <div class="item item-text-wrap">
-            {{recipe.production}}
-          </div>  
+          </div>          
+          <div class="item" style="padding: 5px;">
+            <textarea rows="22" ng-model="recipe.production" disabled="true" style="width:100%;background-color:#fff;"></textarea>               
+          </div>
         </div>
       </ion-slide>
 

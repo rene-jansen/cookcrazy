@@ -1,0 +1,97 @@
+<ion-modal-view>
+  
+  <ion-header-bar class="bar-positive item-icon-left">
+    <i class="icon ion-gear-b"></i>
+    <h1 class="title">Settings</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeSettings()">Done</button>
+    </div>
+  </ion-header-bar>
+  
+  <ion-content>    
+
+      <div class="list">
+
+        <ion-toggle ng-model="settings.showAllCountry" ng-checked="settings.showAllCountry" >
+          Show all Countries
+        </ion-toggle>        
+          
+        <label class="item item-input item-select" >
+          <div class="input-label">
+            Default Country
+          </div>      
+          <select ng-model="settings.defaultCountry">
+            <option ng-repeat="country in countrylist" ng-value="country._id" ng-selected="settings.defaultCountry  == country._id">
+              {{country.country}}
+            </option>                     
+          </select>
+        </label>
+      
+        <label class="item item-input item-floating-label">
+          <span class="input-label">Remote Repository</span>          
+          <textarea placeholder="Remote Repository (e.g. https://mycooking.iriscouch.com/)" ng-model="settings.remoteRepository"></textarea>
+        </label>
+        
+      </div>
+
+  </ion-content>
+
+</ion-modal-view>
+
+<!--
+ng-change="showAllChange()"
+
+  $scope.showall = Settings.getShowAllCountry();
+
+  $scope.showAllChange = function() {
+    console.log($scope.settings.showAllCountry);   
+  };
+
+
+
+ng-class="{active: settings.defaultCountry == country._id"
+
+        <div class="item">
+          <pre ng-bind="settings.defaultCountry | json"></pre> 
+        </div>
+
+           <div ng-if="settings.defaultCountry==country._id">    
+              <option selected ng-repeat="country in countrylist" ng-value="country._id">
+                {{country.country}}
+              </option>                     
+            </div>
+           <div ng-if="settings.defaultCountry!=country._id">    
+              <option ng-repeat="country in countrylist" ng-value="country._id">
+                {{country.country}}
+              </option>                     
+            </div>
+            
+
+
+
+        <ion-toggle ng-model="showall" ng-checked="showall">
+          Show all Countries
+        </ion-toggle>  
+
+
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Default Country
+        </div>      
+        <select ng-repeat="country in countrylist">
+          <option>{{country.country}}</option>          
+        </select>
+      </label>
+
+
+
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar" ng-repeat="country in countrylist" 
+                ng-click="selectCountry(country, $index)" ng-class="{active: activeCountry == country}">
+        <img ng-src="{{country.imagePath}}">
+        {{country.country}}
+      </ion-item>
+    </ion-list> 
+
+-->

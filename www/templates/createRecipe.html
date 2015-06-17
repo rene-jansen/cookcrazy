@@ -1,0 +1,25 @@
+<ion-modal-view>
+  
+  <ion-header-bar class="bar-positive">
+    <!-- image selected country -->
+    <h1 class="title">Create Recipe</h1>
+    <div class="buttons">
+      <button class="button button-clear" ng-click="closeRecipe()">Close</button>
+    </div>
+  </ion-header-bar>
+  
+  <ion-content>
+    <form ng-submit="acceptRecipe()">
+      <div class="list">
+
+        <label class="item item-input">          
+          <input type="text" placeholder="Name" ng-model="recipeData.name">
+        </label>
+
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Accept</button>
+        </label>
+      </div>
+    </form>
+  </ion-content>
+</ion-modal-view>

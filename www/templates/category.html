@@ -1,0 +1,20 @@
+<ion-view view-title={{category.category}}>
+  
+  <ion-nav-buttons side="right">
+    <button class="button button-icon button-clear ion-compose" ng-click="updateCategory()">
+    </button>
+  </ion-nav-buttons> 
+  
+  <ion-content padding="false">
+    
+    <div class="card">
+      <div class="item item-divider">
+        Sorting Order
+      </div>                    
+      <div class="item item-text-wrap">
+        {{category.order}}
+      </div>  
+    </div> 
+    
+  </ion-content>
+</ion-view>

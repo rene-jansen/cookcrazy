@@ -1,0 +1,157 @@
+<ion-modal-view>
+  <form ng-submit="acceptRecipe()">    
+    
+    <ion-header-bar class="bar-positive">
+      <button class="button button-clear" ng-click="closeRecipe()">Close</button>
+      <h1 class="title">Update {{recipe.name}}</h1>
+      <button class="button button-clear" type="submit">Accept</button>
+    </ion-header-bar>
+
+    <ion-content>
+    
+      <ion-slide-box show-pager="true" >
+        <!-- class= "has-header" style="position:absolute; bottom:0; left:0; right: 0;" -->
+        <ion-slide>    
+
+            <div class="list card">
+
+              <div class="item item-divider item-text-wrap item-input">
+                <input type="text" placeholder="Description" ng-model="recipe.description">                
+              </div>  
+              
+              <div class="row">
+                <div class="col col-66">
+                  <div class="item">
+                    Preparation time (m)
+                  </div>            
+                </div>
+
+                <div class="col col-33">
+                  <div class="item item-input">
+                    <input type="text" placeholder="0" ng-model="recipe.preparationtime" style="text-align: right"> 
+                  </div>            
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col col-66">
+                  <div class="item">
+                    Cooking time (m)
+                  </div>            
+                </div>
+
+                <div class="col col-33">
+                  <div class="item item-input">                    
+                    <input type="text" placeholder="0" ng-model="recipe.cookingtime" style="text-align: right"> 
+                  </div>            
+                </div>            
+              </div>
+
+              <div class="row">
+                <div class="col col-33">
+                  <div class="item">
+                    Serves
+                  </div>            
+                </div>
+                <div class="col col-66">
+                  <div class="item item-input" >
+                    <input type="text" placeholder="Serves" ng-model="recipe.serves" style="text-align: right">
+                  </div>            
+                </div>                
+              </div>
+
+              <div class="row">
+                <div class="col col-33">
+                  <div class="item">
+                    Author
+                  </div>            
+                </div>
+                <div class="col col-66">
+                  <div class="item item-text-wrap item-input">                  
+                    <textarea placeholder="Author" ng-model="recipe.author"></textarea>                                        
+                  </div>            
+                </div>                
+              </div>
+
+              <div class="row">
+                <div class="col col-33">
+                  <div class="item">
+                    Source
+                  </div>            
+                </div>
+                <div class="col col-66">
+                  <div class="item item-text-wrap item-input">                                      
+                    <textarea placeholder="Source" ng-model="recipe.source"></textarea>
+                  </div>            
+                </div>                
+              </div>                        
+              
+              
+              <div class="item item-body item-input item-select" >
+                <i class="icon ion-pricetag placeholder-icon"></i>
+                <div class="input-label">                  
+                  Mandatory Tag
+                </div>      
+                <select ng-model="tgs">
+                  <option ng-repeat="category in categorylist" ng-value="category.category" ng-selected="tgs == category.category">
+                    {{category.category}}
+                  </option>                     
+                </select>
+              </div>
+              
+              <div class="row">
+                <div class="col">
+                  <div class="item item-icon-left">
+                    <i class="icon ion-pricetag placeholder-icon"></i>
+                    Optional
+                  </div>            
+                </div>
+                <div class="col">
+                  <div class="item item-input">                                      
+                    <input type="text" placeholder="optional tag(s)" ng-model="optionaltags" style="text-align: right">
+                  </div>            
+                </div> 
+              </div>
+            </div>
+
+            <div class="row">&nbsp;</div>  
+
+        </ion-slide>
+
+        <ion-slide>
+          <div class="card">
+            <div class="item item-divider">
+              Ingredients
+            </div>          
+            <div class="row">
+              <div class="col">
+                <div class="item item-input" style="padding: 0px;">                  
+                  <textarea placeholder="Ingredients" rows="20" ng-model="recipe.ingredient1"></textarea>   
+                </div>            
+              </div>
+              <div class="col">
+                <div class="item item-input" style="padding: 0px;">                  
+                  <textarea placeholder="Ingredients" rows="20" ng-model="recipe.ingredient2"></textarea>   
+                </div>            
+              </div>        
+            </div>
+          </div>
+        </ion-slide>
+
+        <ion-slide>
+          <div class="list card">
+            <div class="item item-divider">
+              Instructions
+            </div>                    
+            <div class="item item-input">              
+              <textarea placeholder="Production" rows="20" ng-model="recipe.production"></textarea> 
+            </div>  
+          </div>
+        </ion-slide>
+
+      </ion-slide-box>      
+    
+    </ion-content>
+    
+  </form>    
+</ion-modal-view>
